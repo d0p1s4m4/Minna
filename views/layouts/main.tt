@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="<% settings.charset %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title><% title %></title>
+    <link rel="stylesheet" href="<% request.uri_base %>/css/style.css">
+  </head>
+  <body>
+    <% content %>
+    <hr>
+    <div id="footer">
+      <img src="<% request.uri_base %>/images/perl_powered.gif" alt="Powered by Perl" /> <img src="<% request.uri_base %>/images/lynx_friendly.gif" alt="Lynx friendly" />
+    </div>
+  </body>
+</html>
