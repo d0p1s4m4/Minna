@@ -1,0 +1,5 @@
+<div id="page">
+    <p>This is an Activity Relay for fediverse instances.</p>
+    <p>For Mastodon instances, you may subscribe to this relay with the address: <a href="https://<% request.host %>/inbox">https://<% request.host %>/inbox</a></p>
+    <p>For Pleroma and other instances, you may subscribe to this relay with the address: <a href="https://<% request.host %>/actor">https://<% request.host %>/actor</a></p>
+</div>
