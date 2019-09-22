@@ -2,6 +2,9 @@ package Minna::ActivityPub;
 use Dancer2;
 set serializer => 'JSON';
 
+my $commit = `git rev-parse HEAD`;
+$commit =~ s/^\s+|\s+$//g;
+
 get '/.well-know/webfinger' => sub {
     my $subject = query_parameters->get('resource');
     my $host = request->host;
@@ -27,6 +30,41 @@ get '/.well-know/webfinger' => sub {
             }
         ],
         subject => $subject
+    };
+};
+
+get '/.well-know/nodeinfo' => sub {
+    my $host = request->host;
+
+    return {
+        links => [
+            {
+                rel => 'http://nodeinfo.diaspora.software/ns/schema/2.0',
+                href => "https://$host/nodeinfo/2.0.json"
+            }
+        ]
+    };
+};
+
+get '/nodeinfo/2.0.json' => sub {
+    return {
+        openRegistrations => \0,
+        protocols => ['activitypub'],
+        services => {
+            inbound => [],
+            outbound => []
+        },
+        software => {
+            name => 'minna-relay',
+            version => "0.1 $commit"
+        },
+        usage => {
+            localPosts => 0,
+            users => {
+                total => 1
+            }
+        },
+        version => '2.0'
     };
 };
 
