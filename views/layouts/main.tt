@@ -7,10 +7,21 @@
     <link rel="stylesheet" href="<% request.uri_base %>/css/style.css">
   </head>
   <body>
+    <header>
+      <img src="/images/logo.png" alt="Minna" with="256px" height="256px">
+    </header>
     <% content %>
     <hr>
-    <div id="footer">
-      <img src="<% request.uri_base %>/images/perl_powered.gif" alt="Powered by Perl" /> <img src="<% request.uri_base %>/images/lynx_friendly.gif" alt="Lynx friendly" />
-    </div>
+    <footer>
+      <a href="http://perldancer.org/">
+        <img src="<% request.uri_base %>/images/perl_powered.png" alt="Powered by Perl" />
+      </a>
+      <a href="https://github.com/d0p1s4m4/Minna">
+        <img src="<% request.uri_base %>/images/fork_me.png" alt="Fork me on github" />
+      </a>
+      <a href="https://lynx.browser.org/">
+       <img src="<% request.uri_base %>/images/lynx_friendly.png" alt="Lynx friendly" />
+      </a>
+    </footer>
   </body>
 </html>

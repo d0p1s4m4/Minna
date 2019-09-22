@@ -1,7 +1,25 @@
-h1 {
+html {
+    background-color: #fffff0;
+    color: #2c2c2c;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #8c6499;
+}
+
+a:hover {
+    color: #42033d;
+}
+
+header {
     text-align: center;
 }
 
-#footer {
+footer {
     text-align: center;
+}
+
+footer > a {
+    text-decoration: none;
 }
