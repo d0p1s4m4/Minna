@@ -21,7 +21,7 @@ get '/.well-know/webfinger' => sub {
     my $subject = query_parameters->get('resource');
     my $host = request->host;
 
-    if ($subject ne "acct:relay\@$host") {
+    if (!defined $subject or $subject ne "acct:relay\@$host") {
         # TODO return json
         send_error("Not found", 404);
     }
