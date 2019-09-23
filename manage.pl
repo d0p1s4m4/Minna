@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use DBI;
-use Data::Dumper;
+use Crypt::OpenSSL::RSA;
 
 my $ban_schema = <<END_BAN_SCHEMA;
 
@@ -41,10 +41,15 @@ sub show_help {
 sub fnc_init {
     print "create database:";
     my $db = connect_to_db;
-    print " OK\nCreate ban table: ";
+    print " OK\nCreate ban table:";
     $db->do($ban_schema) or die $db->errstr;
-    print " OK\nCreate following table: ";
+    print " OK\nCreate following table:";
     $db->do($following_schema) or die $db->errstr;
+    print " OK\nGenerate RSA private key: ";
+    my $rsa = Crypt::OpenSSL::RSA->generate_key(4096);
+    open(my $fd, '>', 'priv.key');
+    print $fd $rsa->get_private_key_string();
+    close $fd;
     print " OK\n";
 }
 

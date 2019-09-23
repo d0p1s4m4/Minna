@@ -1,6 +1,18 @@
 package Minna::ActivityPub;
 use Dancer2;
+use Crypt::OpenSSL::RSA;
+use File::Slurper 'read_text';
+use FindBin;
+
 set serializer => 'JSON';
+
+sub read_RSA_key {
+    my $rsa_priv_string = read_text("$FindBin::Bin/../priv.key");
+    return Crypt::OpenSSL::RSA->new_private_key($rsa_priv_string);
+}
+
+my $rsa = read_RSA_key;
+my $pubkey = $rsa->get_public_key_x509_string();
 
 my $commit = `git rev-parse HEAD`;
 $commit =~ s/^\s+|\s+$//g;
@@ -85,7 +97,7 @@ get '/actor' => sub {
         publicKey => {
             id => "https://$host/actor#main-key",
             owner => "https://$host/actor",
-            publicKeyPem => 'TODO pubkey'
+            publicKeyPem => "$pubkey"
         },
         summary => 'ActivityPub Relay Bot',
         preferredUsername => 'relay',

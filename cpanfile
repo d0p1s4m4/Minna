@@ -1,5 +1,7 @@
 requires "Dancer2" => "0.208001";
 requires "DBD::SQLite" => "1.62";
+requires "Crypt::OpenSSL::RSA" => "0.31";
+requires "File::Slurper" => "0.012";
 
 recommends "YAML"             => "0";
 recommends "URL::Encode::XS"  => "0";
