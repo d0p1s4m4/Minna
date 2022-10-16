@@ -2,3 +2,10 @@ local/
 db.sqlite
 *~
 priv.key
+
+# Makefile.PL generated
+/MYMETA.json
+/MYMETA.yml
+/Makefile
+/blib
+/pm_to_blib

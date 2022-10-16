@@ -9,11 +9,11 @@ $eumm_version =~ s/_//;
 
 WriteMakefile(
     NAME                => 'Minna',
-    AUTHOR              => q{d0p1 <youremail@example.com>},
+    AUTHOR              => q{d0p1 <contact@d0p1.eu>},
     VERSION_FROM        => 'lib/Minna.pm',
     ABSTRACT            => 'ActivityPub Relay',
     ($eumm_version >= 6.3001
-      ? ('LICENSE'=> 'bsd-3-clause')
+      ? ('LICENSE'=> 'bsd')
       : ()),
     PL_FILES            => {},
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
